@@ -2,6 +2,8 @@
   "itemGroup.examplemod": "Example Mod Tab",
   "block.examplemod.example_block": "Example Block",
   "item.examplemod.example_item": "Example Item",
+  "block.examplemod.swamp_eye": "Swamp Eye",
+  "item.examplemod.swamp_eye": "Swamp Eye",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
