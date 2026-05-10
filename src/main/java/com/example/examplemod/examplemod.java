@@ -4,7 +4,9 @@ import com.example.examplemod.block.SwampEyeBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -13,6 +15,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+
 
 import java.util.function.Supplier;
 
@@ -37,12 +40,22 @@ public final class examplemod {
     public static final Supplier<Item> SWAMP_EYE_ITEM = ITEMS.register("swamp_eye",
             () -> new BlockItem(SWAMP_EYE.get(), new Item.Properties()
                     .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "swamp_eye")))));
-
+    public static final Supplier<Item> SWAMP_FRUIT = ITEMS.register("swamp_fruit",
+            () -> new Item(new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "swamp_fruit")))
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationModifier(0.3f)
+                            .alwaysEdible()
+                            .build())));
     public static final Supplier<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.examplemod"))
                     .icon(() -> SWAMP_EYE_ITEM.get().getDefaultInstance())
-                    .displayItems((parameters, output) -> output.accept(SWAMP_EYE_ITEM.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(SWAMP_EYE_ITEM.get());
+                        output.accept(SWAMP_FRUIT.get());
+                    })
                     .build());
 
     // Construtor - OBRIGATÓRIO receber IEventBus
