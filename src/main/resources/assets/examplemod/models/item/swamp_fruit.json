@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "examplemod:item/swamp_fruit"
-  }
+  "parent": "minecraft:builtin/entity"
 }

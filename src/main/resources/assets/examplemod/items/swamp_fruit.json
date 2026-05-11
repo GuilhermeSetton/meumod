@@ -1,6 +1,9 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "examplemod:item/swamp_fruit"
+    "type": "minecraft:special",
+    "base": "examplemod:item/swamp_fruit",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
   }
 }
